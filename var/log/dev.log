@@ -1,0 +1,4 @@
+[2024-01-29T13:30:15.993644+00:00] http_client.INFO: Request: "GET https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm" [] []
+[2024-01-29T13:30:15.995861+00:00] http_client.INFO: Request: "GET https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/+esm" [] []
+[2024-01-29T13:30:16.266118+00:00] http_client.INFO: Response: "200 https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm" [] []
+[2024-01-29T13:30:16.281008+00:00] http_client.INFO: Response: "200 https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/+esm" [] []
