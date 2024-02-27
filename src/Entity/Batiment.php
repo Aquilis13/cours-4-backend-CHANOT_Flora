@@ -27,12 +27,19 @@ class Batiment
 
     public function __construct()
     {
-        $this->Personne = new ArrayCollection();
+        $this->personne = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(string $id): static
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -71,6 +78,7 @@ class Batiment
     {
         if (!$this->personne->contains($personne)) {
             $this->personne->add($personne);
+            $personne->addBatiment($this);
         }
 
         return $this;

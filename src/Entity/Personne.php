@@ -38,6 +38,13 @@ class Personne
         return $this->id;
     }
 
+    public function setId(string $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getPrenom(): ?string
     {
         return $this->prenom;
