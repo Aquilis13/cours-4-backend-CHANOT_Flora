@@ -22,7 +22,7 @@ final class GeneratedConfig
         1 => 'rules.neon',
       ),
     ),
-    'version' => '1.3.59',
+    'version' => '1.3.62',
   ),
   'phpstan/phpstan-symfony' => 
   array (

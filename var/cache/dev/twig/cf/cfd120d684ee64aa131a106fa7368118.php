@@ -387,19 +387,19 @@ class __TwigTemplate_ec808656ff1e9b1b059bd9070c1abb7f extends Template
                                                         <pre class=\"prewrap\" style=\"max-height: 600px\">";
                     // line 137
                     echo twig_escape_filter($this->env, ("Subject: " . twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 137, $this->source); })()), "getSubject", [], "method", false, false, false, 137)), "html", null, true);
-                    echo "<br>";
+                    echo "<br/>";
                     // line 138
                     echo twig_escape_filter($this->env, ("Content: " . twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 138, $this->source); })()), "getContent", [], "method", false, false, false, 138)), "html", null, true);
-                    echo "<br>";
+                    echo "<br/>";
                     // line 139
                     echo twig_escape_filter($this->env, ("Importance: " . twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 139, $this->source); })()), "getImportance", [], "method", false, false, false, 139)), "html", null, true);
-                    echo "<br>";
+                    echo "<br/>";
                     // line 140
                     echo twig_escape_filter($this->env, ("Emoji: " . ((twig_test_empty(twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 140, $this->source); })()), "getEmoji", [], "method", false, false, false, 140))) ? ("(empty)") : (twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 140, $this->source); })()), "getEmoji", [], "method", false, false, false, 140)))), "html", null, true);
-                    echo "<br>";
+                    echo "<br/>";
                     // line 141
                     echo twig_escape_filter($this->env, ("Exception: " . (((twig_get_attribute($this->env, $this->source, ($context["notification"] ?? null), "getException", [], "method", true, true, false, 141) &&  !(null === twig_get_attribute($this->env, $this->source, ($context["notification"] ?? null), "getException", [], "method", false, false, false, 141)))) ? (twig_get_attribute($this->env, $this->source, ($context["notification"] ?? null), "getException", [], "method", false, false, false, 141)) : ("(empty)"))), "html", null, true);
-                    echo "<br>";
+                    echo "<br/>";
                     // line 142
                     echo twig_escape_filter($this->env, ("ExceptionAsString: " . ((twig_test_empty(twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 142, $this->source); })()), "getExceptionAsString", [], "method", false, false, false, 142))) ? ("(empty)") : (twig_get_attribute($this->env, $this->source, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 142, $this->source); })()), "getExceptionAsString", [], "method", false, false, false, 142)))), "html", null, true);
                     echo "
@@ -621,11 +621,11 @@ class __TwigTemplate_ec808656ff1e9b1b059bd9070c1abb7f extends Template
                                                     <h3 class=\"tab-title\">Notification</h3>
                                                     <div class=\"tab-content\">
                                                         <pre class=\"prewrap\" style=\"max-height: 600px\">
-                                                            {{- 'Subject: ' ~ notification.getSubject() }}<br>
-                                                            {{- 'Content: ' ~ notification.getContent() }}<br>
-                                                            {{- 'Importance: ' ~ notification.getImportance() }}<br>
-                                                            {{- 'Emoji: ' ~ (notification.getEmoji() is empty ? '(empty)' : notification.getEmoji()) }}<br>
-                                                            {{- 'Exception: ' ~ notification.getException() ?? '(empty)' }}<br>
+                                                            {{- 'Subject: ' ~ notification.getSubject() }}<br/>
+                                                            {{- 'Content: ' ~ notification.getContent() }}<br/>
+                                                            {{- 'Importance: ' ~ notification.getImportance() }}<br/>
+                                                            {{- 'Emoji: ' ~ (notification.getEmoji() is empty ? '(empty)' : notification.getEmoji()) }}<br/>
+                                                            {{- 'Exception: ' ~ notification.getException() ?? '(empty)' }}<br/>
                                                             {{- 'ExceptionAsString: ' ~ (notification.getExceptionAsString() is empty ? '(empty)' : notification.getExceptionAsString()) }}
                                                         </pre>
                                                     </div>

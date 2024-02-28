@@ -65,7 +65,7 @@ class __TwigTemplate_b83a922415b8e434569cafe2f2b69c52 extends Template
 <div id=\"sfToolbarMainContent-";
         // line 9
         echo twig_escape_filter($this->env, (isset($context["token"]) || array_key_exists("token", $context) ? $context["token"] : (function () { throw new RuntimeError('Variable "token" does not exist.', 9, $this->source); })()), "html", null, true);
-        echo "\" class=\"sf-toolbarreset notranslate clear-fix\" data-no-turbolink>
+        echo "\" class=\"sf-toolbarreset notranslate clear-fix\" data-no-turbolink data-turbo=\"false\">
     ";
         // line 10
         $context['_parent'] = $context;
@@ -204,7 +204,7 @@ $context["name"], "profiler_markup_version" =>                 // line 17
 </div>
 <div id=\"sfToolbarClearer-{{ token }}\" class=\"sf-toolbar-clearer\"></div>
 
-<div id=\"sfToolbarMainContent-{{ token }}\" class=\"sf-toolbarreset notranslate clear-fix\" data-no-turbolink>
+<div id=\"sfToolbarMainContent-{{ token }}\" class=\"sf-toolbarreset notranslate clear-fix\" data-no-turbolink data-turbo=\"false\">
     {% for name, template in templates %}
         {% if block('toolbar', template) is defined %}
             {% with {

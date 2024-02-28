@@ -20,7 +20,7 @@ use App\Entity\Batiment;
 class AddDatasInBDDCommand extends Command
 {
     private EntityManagerInterface $entityManager;
-    
+
     public function __construct(EntityManagerInterface $entityManager)
     {
         parent::__construct();
@@ -29,13 +29,12 @@ class AddDatasInBDDCommand extends Command
 
     protected function configure(): void
     {
-
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        
+
         /*-------------------------------------------------------------------------------------------
          *   ░█▀▀░█▀▄░█▀▀░█▀█░▀█▀░▀█▀░█▀█░█▀█░░░█▀▄░█░█░░░▀▀█░█▀▀░█░█░░░█▀▄░▀░█▀▀░█▀▀░█▀▀░█▀█░▀█▀
          *   ░█░░░█▀▄░█▀▀░█▀█░░█░░░█░░█░█░█░█░░░█░█░█░█░░░░░█░█▀▀░█░█░░░█░█░░░█▀▀░▀▀█░▀▀█░█▀█░░█░
@@ -79,7 +78,7 @@ class AddDatasInBDDCommand extends Command
         $personne3->setPrenom('Lefèvre');
         $personne3->addBatiment($batiment2);
         $personne3->addBatiment($batiment4);
-        
+
         // Enregistrement des personnes
         $this->entityManager->persist($personne1);
         $this->entityManager->persist($personne2);
@@ -87,7 +86,7 @@ class AddDatasInBDDCommand extends Command
 
         // Sauvegarde les enregistrements dans la BDD
         $this->entityManager->flush();
-         
+
         // =====================================================================================
 
         $io->success("Jeu d'essai ajouter à la base de données !");

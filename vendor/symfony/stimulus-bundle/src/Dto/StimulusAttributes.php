@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Symfony\UX\StimulusBundle\Dto;
 
 use Twig\Environment;
+use Twig\Extension\EscaperExtension;
 
 /**
  * Helper to build Stimulus-related HTML attributes.
@@ -69,7 +70,7 @@ class StimulusAttributes implements \Stringable, \IteratorAggregate
     /**
      * @param array $parameters Parameters to pass to the action. Optional.
      */
-    public function addAction(string $controllerName, string $actionName, string $eventName = null, array $parameters = []): void
+    public function addAction(string $controllerName, string $actionName, ?string $eventName = null, array $parameters = []): void
     {
         $controllerName = $this->normalizeControllerName($controllerName);
         $this->actions[] = [
@@ -89,7 +90,7 @@ class StimulusAttributes implements \Stringable, \IteratorAggregate
      * @param string      $controllerName the Stimulus controller name
      * @param string|null $targetNames    The space-separated list of target names if a string is passed to the 1st argument. Optional.
      */
-    public function addTarget(string $controllerName, string $targetNames = null): void
+    public function addTarget(string $controllerName, ?string $targetNames = null): void
     {
         if (null === $targetNames) {
             return;
@@ -214,6 +215,11 @@ class StimulusAttributes implements \Stringable, \IteratorAggregate
 
     private function escapeAsHtmlAttr(mixed $value): string
     {
+        if (method_exists(EscaperExtension::class, 'escape')) {
+            return EscaperExtension::escape($this->env, $value, 'html_attr');
+        }
+
+        // since twig/twig 3.9.0: Using the internal "twig_escape_filter" function is deprecated.
         return (string) twig_escape_filter($this->env, $value, 'html_attr');
     }
 

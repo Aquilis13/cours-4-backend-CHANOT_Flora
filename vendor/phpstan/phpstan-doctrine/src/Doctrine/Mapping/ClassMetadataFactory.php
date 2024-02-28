@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use function class_exists;
 use function count;
+use function method_exists;
 use const PHP_VERSION_ID;
 
 class ClassMetadataFactory extends \Doctrine\ORM\Mapping\ClassMetadataFactory
@@ -28,7 +29,7 @@ class ClassMetadataFactory extends \Doctrine\ORM\Mapping\ClassMetadataFactory
 	protected function initialize(): void
 	{
 		$drivers = [];
-		if (class_exists(AnnotationReader::class)) {
+		if (class_exists(AnnotationDriver::class) && class_exists(AnnotationReader::class)) {
 			$docParser = new DocParser();
 			$docParser->setIgnoreNotImportedAnnotations(true);
 			$drivers[] = new AnnotationDriver(new AnnotationReader($docParser));
@@ -47,7 +48,12 @@ class ClassMetadataFactory extends \Doctrine\ORM\Mapping\ClassMetadataFactory
 			'memory' => true,
 		], $config);
 
-		$em = EntityManager::create($connection, $config);
+		if (!method_exists(EntityManager::class, 'create')) {
+			$em = new EntityManager($connection, $config);
+		} else {
+			$em = EntityManager::create($connection, $config);
+		}
+
 		$this->setEntityManager($em);
 		parent::initialize();
 
@@ -59,7 +65,7 @@ class ClassMetadataFactory extends \Doctrine\ORM\Mapping\ClassMetadataFactory
 	 * @param class-string<T> $className
 	 * @return ClassMetadata<T>
 	 */
-	protected function newClassMetadataInstance($className)
+	protected function newClassMetadataInstance($className): ClassMetadata
 	{
 		return new ClassMetadata($className);
 	}

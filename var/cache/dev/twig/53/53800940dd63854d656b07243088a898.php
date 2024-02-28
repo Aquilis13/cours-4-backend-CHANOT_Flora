@@ -51,9 +51,9 @@ class __TwigTemplate_d2aaf1b2de1ca6910d58bcbb29ee8ad5 extends Template
         <meta charset=\"";
         // line 4
         echo twig_escape_filter($this->env, $this->env->getCharset(), "html", null, true);
-        echo "\">
-        <meta name=\"robots\" content=\"noindex,nofollow\">
-        <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
+        echo "\" />
+        <meta name=\"robots\" content=\"noindex,nofollow\" />
+        <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />
         <title>";
         // line 7
         $this->displayBlock('title', $context, $blocks);
@@ -267,9 +267,9 @@ class __TwigTemplate_d2aaf1b2de1ca6910d58bcbb29ee8ad5 extends Template
         return new Source("<!DOCTYPE html>
 <html lang=\"en\">
     <head>
-        <meta charset=\"{{ _charset }}\">
-        <meta name=\"robots\" content=\"noindex,nofollow\">
-        <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
+        <meta charset=\"{{ _charset }}\" />
+        <meta name=\"robots\" content=\"noindex,nofollow\" />
+        <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />
         <title>{% block title %}Symfony Profiler{% endblock %}</title>
 
         {% set request_collector = profile is defined ? profile.collectors.request|default(null) : null %}

@@ -16,7 +16,7 @@ Listes des points attendu:
 - [X] Créer au moins une entité avec les commandes
 - [X] Créer le fichier de migration avec la commande symfony
 - [X] Créer au moins un controller avec sa vue twig
-- [ ] Créer une commande qui ajoute des données en BDD
+- [X] Créer une commande qui ajoute des données en BDD
 - [ ] script bash qui execute tout les test
 
 Listes des points bonus

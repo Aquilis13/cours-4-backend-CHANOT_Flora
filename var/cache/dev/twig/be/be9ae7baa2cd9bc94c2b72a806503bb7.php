@@ -1141,9 +1141,16 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
             var targetElement = document.getElementById(targetId);
 
             if (targetElement.style.display != 'block') {
-                Sfjs.load(targetId, link.href, null, function(xhr, el) {
-                    el.innerHTML = 'An error occurred while loading the query explanation.';
-                });
+                if (targetElement.getAttribute('data-sfurl') !== link.href) {
+                    fetch(link.href, {
+                        headers: {'X-Requested-With': 'XMLHttpRequest'}
+                    }).then(async function (response) {
+                        targetElement.innerHTML = await response.text()
+                        targetElement.setAttribute('data-sfurl', link.href)
+                    }, function () {
+                        targetElement.innerHTML = 'An error occurred while loading the query explanation.';
+                    })
+                }
 
                 targetElement.style.display = 'block';
                 link.innerHTML = 'Hide query explanation';
@@ -1184,15 +1191,13 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
             });
 
             for (i = 0; i < items.length; ++i) {
-                Sfjs.removeClass(items[i], i % 2 ? 'even' : 'odd');
-                Sfjs.addClass(items[i], i % 2 ? 'odd' : 'even');
                 target.appendChild(items[i]);
             }
         }
 
         if (navigator.clipboard) {
             document.querySelectorAll('[data-clipboard-text]').forEach(function(button) {
-                Sfjs.removeClass(button, 'hidden');
+                button.classList.remove('hidden');
                 button.addEventListener('click', function() {
                     navigator.clipboard.writeText(button.getAttribute('data-clipboard-text'));
                 })
@@ -1209,7 +1214,7 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
 
     }
 
-    // line 511
+    // line 516
     public function macro_render_simple_table($__label1__ = null, $__label2__ = null, $__data__ = null, ...$__varargs__)
     {
         $macros = $this->macros;
@@ -1230,34 +1235,34 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
             $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
             $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "macro", "render_simple_table"));
 
-            // line 512
+            // line 517
             echo "    <table>
         <thead>
         <tr>
             <th scope=\"col\" class=\"key\">";
-            // line 515
-            echo twig_escape_filter($this->env, (isset($context["label1"]) || array_key_exists("label1", $context) ? $context["label1"] : (function () { throw new RuntimeError('Variable "label1" does not exist.', 515, $this->source); })()), "html", null, true);
+            // line 520
+            echo twig_escape_filter($this->env, (isset($context["label1"]) || array_key_exists("label1", $context) ? $context["label1"] : (function () { throw new RuntimeError('Variable "label1" does not exist.', 520, $this->source); })()), "html", null, true);
             echo "</th>
             <th scope=\"col\">";
-            // line 516
-            echo twig_escape_filter($this->env, (isset($context["label2"]) || array_key_exists("label2", $context) ? $context["label2"] : (function () { throw new RuntimeError('Variable "label2" does not exist.', 516, $this->source); })()), "html", null, true);
+            // line 521
+            echo twig_escape_filter($this->env, (isset($context["label2"]) || array_key_exists("label2", $context) ? $context["label2"] : (function () { throw new RuntimeError('Variable "label2" does not exist.', 521, $this->source); })()), "html", null, true);
             echo "</th>
         </tr>
         </thead>
         <tbody>
         ";
-            // line 520
+            // line 525
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 520, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 525, $this->source); })()));
             foreach ($context['_seq'] as $context["key"] => $context["value"]) {
-                // line 521
+                // line 526
                 echo "            <tr>
                 <th scope=\"row\">";
-                // line 522
+                // line 527
                 echo twig_escape_filter($this->env, $context["key"], "html", null, true);
                 echo "</th>
                 <td>";
-                // line 523
+                // line 528
                 echo twig_escape_filter($this->env, $context["value"], "html", null, true);
                 echo "</td>
             </tr>
@@ -1266,7 +1271,7 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['key'], $context['value'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 526
+            // line 531
             echo "        </tbody>
     </table>
 ";
@@ -1304,7 +1309,7 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
      */
     public function getDebugInfo()
     {
-        return array (  1270 => 526,  1261 => 523,  1257 => 522,  1254 => 521,  1250 => 520,  1243 => 516,  1239 => 515,  1234 => 512,  1213 => 511,  1132 => 438,  1129 => 437,  1123 => 436,  1118 => 433,  1110 => 430,  1106 => 428,  1102 => 426,  1093 => 424,  1089 => 423,  1086 => 422,  1084 => 421,  1076 => 418,  1070 => 416,  1067 => 415,  1063 => 414,  1053 => 406,  1047 => 402,  1045 => 401,  1042 => 400,  1036 => 398,  1033 => 397,  1028 => 396,  1022 => 392,  1020 => 391,  1013 => 387,  1008 => 384,  1005 => 383,  1002 => 382,  997 => 380,  994 => 379,  992 => 378,  989 => 377,  984 => 375,  981 => 374,  979 => 373,  976 => 372,  971 => 370,  968 => 369,  966 => 368,  958 => 363,  950 => 358,  942 => 353,  938 => 351,  932 => 347,  929 => 346,  923 => 342,  921 => 341,  914 => 337,  909 => 334,  903 => 332,  897 => 328,  895 => 327,  888 => 323,  883 => 320,  877 => 318,  871 => 314,  869 => 313,  863 => 310,  858 => 307,  855 => 306,  841 => 305,  836 => 302,  820 => 299,  814 => 295,  794 => 290,  790 => 288,  788 => 287,  783 => 286,  781 => 285,  775 => 283,  772 => 282,  770 => 281,  764 => 278,  761 => 277,  744 => 276,  729 => 267,  727 => 266,  724 => 265,  716 => 263,  714 => 262,  711 => 261,  705 => 258,  700 => 257,  698 => 256,  691 => 255,  689 => 254,  683 => 251,  679 => 250,  673 => 249,  669 => 247,  662 => 245,  659 => 244,  657 => 243,  654 => 242,  645 => 240,  642 => 239,  640 => 238,  637 => 237,  630 => 235,  627 => 234,  625 => 233,  618 => 231,  611 => 227,  605 => 224,  602 => 223,  597 => 221,  592 => 220,  587 => 218,  580 => 216,  576 => 215,  573 => 214,  571 => 213,  564 => 212,  561 => 211,  544 => 210,  540 => 209,  535 => 206,  530 => 204,  525 => 203,  520 => 201,  515 => 200,  513 => 199,  508 => 196,  505 => 195,  502 => 194,  499 => 193,  493 => 189,  491 => 188,  488 => 187,  482 => 185,  479 => 184,  462 => 183,  459 => 182,  453 => 180,  447 => 178,  444 => 177,  438 => 173,  436 => 172,  431 => 169,  427 => 167,  423 => 165,  421 => 164,  418 => 163,  416 => 162,  412 => 161,  407 => 158,  399 => 153,  392 => 149,  385 => 145,  381 => 143,  379 => 142,  371 => 137,  363 => 132,  355 => 127,  347 => 122,  338 => 115,  327 => 106,  325 => 105,  317 => 99,  307 => 98,  293 => 94,  289 => 92,  287 => 91,  286 => 90,  285 => 88,  283 => 87,  280 => 86,  270 => 85,  259 => 82,  253 => 79,  250 => 78,  248 => 77,  243 => 75,  236 => 74,  226 => 73,  212 => 68,  209 => 67,  206 => 66,  199 => 61,  191 => 58,  182 => 54,  175 => 50,  171 => 48,  169 => 47,  162 => 45,  155 => 41,  148 => 37,  139 => 33,  135 => 31,  133 => 30,  130 => 29,  127 => 28,  120 => 24,  113 => 21,  106 => 18,  104 => 17,  101 => 16,  95 => 14,  89 => 12,  87 => 11,  84 => 10,  81 => 9,  79 => 8,  76 => 7,  73 => 6,  63 => 5,  53 => 1,  51 => 3,  38 => 1,);
+        return array (  1275 => 531,  1266 => 528,  1262 => 527,  1259 => 526,  1255 => 525,  1248 => 521,  1244 => 520,  1239 => 517,  1218 => 516,  1132 => 438,  1129 => 437,  1123 => 436,  1118 => 433,  1110 => 430,  1106 => 428,  1102 => 426,  1093 => 424,  1089 => 423,  1086 => 422,  1084 => 421,  1076 => 418,  1070 => 416,  1067 => 415,  1063 => 414,  1053 => 406,  1047 => 402,  1045 => 401,  1042 => 400,  1036 => 398,  1033 => 397,  1028 => 396,  1022 => 392,  1020 => 391,  1013 => 387,  1008 => 384,  1005 => 383,  1002 => 382,  997 => 380,  994 => 379,  992 => 378,  989 => 377,  984 => 375,  981 => 374,  979 => 373,  976 => 372,  971 => 370,  968 => 369,  966 => 368,  958 => 363,  950 => 358,  942 => 353,  938 => 351,  932 => 347,  929 => 346,  923 => 342,  921 => 341,  914 => 337,  909 => 334,  903 => 332,  897 => 328,  895 => 327,  888 => 323,  883 => 320,  877 => 318,  871 => 314,  869 => 313,  863 => 310,  858 => 307,  855 => 306,  841 => 305,  836 => 302,  820 => 299,  814 => 295,  794 => 290,  790 => 288,  788 => 287,  783 => 286,  781 => 285,  775 => 283,  772 => 282,  770 => 281,  764 => 278,  761 => 277,  744 => 276,  729 => 267,  727 => 266,  724 => 265,  716 => 263,  714 => 262,  711 => 261,  705 => 258,  700 => 257,  698 => 256,  691 => 255,  689 => 254,  683 => 251,  679 => 250,  673 => 249,  669 => 247,  662 => 245,  659 => 244,  657 => 243,  654 => 242,  645 => 240,  642 => 239,  640 => 238,  637 => 237,  630 => 235,  627 => 234,  625 => 233,  618 => 231,  611 => 227,  605 => 224,  602 => 223,  597 => 221,  592 => 220,  587 => 218,  580 => 216,  576 => 215,  573 => 214,  571 => 213,  564 => 212,  561 => 211,  544 => 210,  540 => 209,  535 => 206,  530 => 204,  525 => 203,  520 => 201,  515 => 200,  513 => 199,  508 => 196,  505 => 195,  502 => 194,  499 => 193,  493 => 189,  491 => 188,  488 => 187,  482 => 185,  479 => 184,  462 => 183,  459 => 182,  453 => 180,  447 => 178,  444 => 177,  438 => 173,  436 => 172,  431 => 169,  427 => 167,  423 => 165,  421 => 164,  418 => 163,  416 => 162,  412 => 161,  407 => 158,  399 => 153,  392 => 149,  385 => 145,  381 => 143,  379 => 142,  371 => 137,  363 => 132,  355 => 127,  347 => 122,  338 => 115,  327 => 106,  325 => 105,  317 => 99,  307 => 98,  293 => 94,  289 => 92,  287 => 91,  286 => 90,  285 => 88,  283 => 87,  280 => 86,  270 => 85,  259 => 82,  253 => 79,  250 => 78,  248 => 77,  243 => 75,  236 => 74,  226 => 73,  212 => 68,  209 => 67,  206 => 66,  199 => 61,  191 => 58,  182 => 54,  175 => 50,  171 => 48,  169 => 47,  162 => 45,  155 => 41,  148 => 37,  139 => 33,  135 => 31,  133 => 30,  130 => 29,  127 => 28,  120 => 24,  113 => 21,  106 => 18,  104 => 17,  101 => 16,  95 => 14,  89 => 12,  87 => 11,  84 => 10,  81 => 9,  79 => 8,  76 => 7,  73 => 6,  63 => 5,  53 => 1,  51 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -1758,9 +1763,16 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
             var targetElement = document.getElementById(targetId);
 
             if (targetElement.style.display != 'block') {
-                Sfjs.load(targetId, link.href, null, function(xhr, el) {
-                    el.innerHTML = 'An error occurred while loading the query explanation.';
-                });
+                if (targetElement.getAttribute('data-sfurl') !== link.href) {
+                    fetch(link.href, {
+                        headers: {'X-Requested-With': 'XMLHttpRequest'}
+                    }).then(async function (response) {
+                        targetElement.innerHTML = await response.text()
+                        targetElement.setAttribute('data-sfurl', link.href)
+                    }, function () {
+                        targetElement.innerHTML = 'An error occurred while loading the query explanation.';
+                    })
+                }
 
                 targetElement.style.display = 'block';
                 link.innerHTML = 'Hide query explanation';
@@ -1801,15 +1813,13 @@ class __TwigTemplate_1387bbc793142acc84bc145cc6573b0a extends Template
             });
 
             for (i = 0; i < items.length; ++i) {
-                Sfjs.removeClass(items[i], i % 2 ? 'even' : 'odd');
-                Sfjs.addClass(items[i], i % 2 ? 'odd' : 'even');
                 target.appendChild(items[i]);
             }
         }
 
         if (navigator.clipboard) {
             document.querySelectorAll('[data-clipboard-text]').forEach(function(button) {
-                Sfjs.removeClass(button, 'hidden');
+                button.classList.remove('hidden');
                 button.addEventListener('click', function() {
                     navigator.clipboard.writeText(button.getAttribute('data-clipboard-text'));
                 })

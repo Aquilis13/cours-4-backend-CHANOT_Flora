@@ -84,6 +84,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "test": "vendor/bin/phpunit",
         "phpcs": "./vendor/bin/phpcs",
         "phpcs:fix": "./vendor/bin/phpcbf",
         "phpstan": "./vendor/bin/phpstan analyse"

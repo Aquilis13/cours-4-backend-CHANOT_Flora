@@ -53,7 +53,7 @@ class RouterListener implements EventSubscriberInterface
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(UrlMatcherInterface|RequestMatcherInterface $matcher, RequestStack $requestStack, RequestContext $context = null, LoggerInterface $logger = null, string $projectDir = null, bool $debug = true)
+    public function __construct(UrlMatcherInterface|RequestMatcherInterface $matcher, RequestStack $requestStack, ?RequestContext $context = null, ?LoggerInterface $logger = null, ?string $projectDir = null, bool $debug = true)
     {
         if (null === $context && !$matcher instanceof RequestContextAwareInterface) {
             throw new \InvalidArgumentException('You must either pass a RequestContext or the matcher must implement RequestContextAwareInterface.');
@@ -159,7 +159,7 @@ class RouterListener implements EventSubscriberInterface
         $docVersion = substr(Kernel::VERSION, 0, 3);
 
         ob_start();
-        include_once \dirname(__DIR__).'/Resources/welcome.html.php';
+        include \dirname(__DIR__).'/Resources/welcome.html.php';
 
         return new Response(ob_get_clean(), Response::HTTP_NOT_FOUND);
     }
