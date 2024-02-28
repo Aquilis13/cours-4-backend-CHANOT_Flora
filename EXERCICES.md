@@ -17,7 +17,7 @@ Listes des points attendu:
 - [X] Créer le fichier de migration avec la commande symfony
 - [X] Créer au moins un controller avec sa vue twig
 - [X] Créer une commande qui ajoute des données en BDD
-- [ ] script bash qui execute tout les test
+- [X] script bash qui execute tout les test
 
 Listes des points bonus
 - [ ] La commande d'ajout de données utilise FakerPHP

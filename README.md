@@ -1,3 +1,23 @@
+# Nom
+`CHANOT Flora`
+
+# Infos
+## Créer au moins une entité avec les commandes :
+[Chemin vers les entitées](https://github.com/Aquilis13/cours-4-backend-CHANOT_Flora/tree/main/src/Entity)
+
+## Créer au moins un controller avec sa vue twig :
+[Aperçu de la vue](https://github.com/Aquilis13/cours-4-backend-CHANOT_Flora/blob/main/RENDU/vue_twig.png)  
+
+**Préalable :** Démarrer le serveur symfony  
+**Chemin de la vue twig :**
+http://0.0.0.0:8000/personne  
+
+## Créer une commande qui ajoute des données en BDD
+`php bin/console app:add-datas-in-bdd`
+
+## Script bash qui execute tout les test
+`chmod +x tests.sh`
+
 # Projet Vide
 
 Bienvenu dans ce projets vide !   
