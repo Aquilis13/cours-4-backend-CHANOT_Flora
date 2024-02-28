@@ -350,6 +350,17 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Command\AddDatasInBDDCommand" class="App\Command\AddDatasInBDDCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setName">
+        <argument>app:add-datas-in-bdd</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Ajoute des données en BDD</argument>
+      </call>
+    </service>
     <service id="App\Controller\BatimentController" class="App\Controller\BatimentController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -372,23 +383,7 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
     <service id="App\Repository\PersonneRepository" class="App\Repository\PersonneRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\TailleRepository" class="App\Repository\TailleRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\TarifRepository" class="App\Repository\TarifRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -4998,7 +4993,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.xbYZyCG"/>
+      <argument type="service" id=".service_locator.USqW5IV"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6951,6 +6946,8 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\AddDatasInBDDCommand" class="App\Command\AddDatasInBDDCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Command\AddDatasInBDDCommand" class="App\Command\AddDatasInBDDCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BatimentController" class="App\Controller\BatimentController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BatimentController" class="App\Controller\BatimentController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BatimentController" class="App\Controller\BatimentController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6961,16 +6958,8 @@
     <service id=".abstract.instanceof.App\Repository\AddressRepository" class="App\Repository\AddressRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BatimentRepository" class="App\Repository\BatimentRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\BatimentRepository" class="App\Repository\BatimentRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PersonneRepository" class="App\Repository\PersonneRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PersonneRepository" class="App\Repository\PersonneRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TailleRepository" class="App\Repository\TailleRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\TailleRepository" class="App\Repository\TailleRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TarifRepository" class="App\Repository\TarifRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\TarifRepository" class="App\Repository\TarifRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.bJ.4HC5" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7648,16 +7637,12 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.xbYZyCG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.USqW5IV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AddressRepository" type="service_closure" id="App\Repository\AddressRepository"/>
         <argument key="App\Repository\BatimentRepository" type="service_closure" id="App\Repository\BatimentRepository"/>
-        <argument key="App\Repository\CategorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
         <argument key="App\Repository\PersonneRepository" type="service_closure" id="App\Repository\PersonneRepository"/>
-        <argument key="App\Repository\ProduitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
-        <argument key="App\Repository\TailleRepository" type="service_closure" id="App\Repository\TailleRepository"/>
-        <argument key="App\Repository\TarifRepository" type="service_closure" id="App\Repository\TarifRepository"/>
       </argument>
     </service>
     <service id=".service_locator.KLVvNIq" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -8345,6 +8330,13 @@
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
     </service>
+    <service id=".App\Command\AddDatasInBDDCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>app:add-datas-in-bdd</argument>
+      <argument type="collection"/>
+      <argument>Ajoute des données en BDD</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="App\Command\AddDatasInBDDCommand"/>
+    </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -9003,8 +8995,9 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.O.CGwuG"/>
+      <argument type="service" id=".service_locator.nRN9KVr"/>
       <argument type="collection">
+        <argument key="app:add-datas-in-bdd">App\Command\AddDatasInBDDCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -9122,9 +9115,10 @@
         <argument key="make:security:form-login">maker.auto_command.make_security_form_login</argument>
       </argument>
     </service>
-    <service id=".service_locator.O.CGwuG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.nRN9KVr" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Command\AddDatasInBDDCommand" type="service_closure" id=".App\Command\AddDatasInBDDCommand.lazy"/>
         <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service_closure" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
         <argument key="asset_mapper.command.compile" type="service_closure" id=".asset_mapper.command.compile.lazy"/>
         <argument key="asset_mapper.command.debug" type="service_closure" id=".asset_mapper.command.debug.lazy"/>
