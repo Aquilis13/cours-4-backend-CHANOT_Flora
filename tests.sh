@@ -1,6 +1,21 @@
 #!/bin/bash
 
-docker compose run --rm php composer phpcs
+echo "---------------------------------------------"
+echo "------------------PHPUNIT--------------------"
+echo "---------------------------------------------"
 docker compose run --rm php composer test
+
+echo "---------------------------------------------"
+echo "-------------------PHPCS---------------------"
+echo "---------------------------------------------"
+docker compose run --rm php composer phpcs
+
+echo "---------------------------------------------"
+echo "-------------------PHPFIX--------------------"
+echo "---------------------------------------------"
 docker compose run --rm php composer phpcs:fix
+
+echo "---------------------------------------------"
+echo "------------------PHPSTAN--------------------"
+echo "---------------------------------------------"
 docker compose run --rm php composer phpstan

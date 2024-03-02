@@ -13,10 +13,15 @@
 http://0.0.0.0:8000/personne  
 
 ## Créer une commande qui ajoute des données en BDD
-`php bin/console app:add-datas-in-bdd`
+```bash
+php bin/console app:add-datas-in-bdd
+```
 
 ## Script bash qui execute tout les test
-`chmod +x tests.sh`
+```bash
+bash tests.sh
+```
+
 
 # Projet Vide
 
